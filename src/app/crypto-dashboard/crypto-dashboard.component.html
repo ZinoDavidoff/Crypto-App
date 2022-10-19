@@ -1,0 +1,64 @@
+<nav class="navbar navbar-light bg-primary">
+  <div class="container-fluid">
+      <h1 style="color: aliceblue;">Crypto App</h1>
+  </div>
+</nav>
+
+<table class="table mt-4">
+  <thead>
+      <tr>
+          <td scope="col">Crypto Id</td>
+          <th scope="col">Crypto Name</th>
+          <th scope="col">Crypto Value</th>
+          <th scope="col">Action</th>
+      </tr>
+  </thead>
+  <tbody >
+      <tr *ngFor="let crypto of cryptos; index as i">
+          <td>{{crypto.id}}</td>
+          <td>{{crypto.name}}</td>
+          <td id="total">
+            {{crypto.value}} 
+            <i *ngIf="isGreen" style="color: green;">&#x2191;</i>
+            <i *ngIf="isRed" style="color: red;">&#x2193;</i>
+          </td>
+
+          <td>
+            <button *ngIf="isToggle"  type="submit" id="setter" class="btn btn-success mx-2" (click)="sumValue(crypto)">Buy</button>
+            <button *ngIf="isToggle" type="submit" class="btn btn-danger mx-2" (click)="subtractValue(crypto)">Sell</button>
+            <button type="submit" class="btn btn-warning mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Buy or Sell Crypto</button>
+          </td>
+          <td>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Buy or Sell Cryptos</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <form>
+                          <div class="mb-3">
+                              <label for="exampleInputEmail1" class="form-label">Insert your Value</label>
+                              <input class="form-control amount" name="input1" type="number" placeholder="Value" [(ngModel)]="inputValue">
+                          </div>
+                      </form>
+                  </div>
+                  <div class="modal-footer">
+                   
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" data-bs-dismiss="modal" class="btn btn-danger" (click)="toggleModal()">Execute</button>
+                
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </td>
+      </tr>
+
+ 
+  </tbody>
+</table>
+
+  
