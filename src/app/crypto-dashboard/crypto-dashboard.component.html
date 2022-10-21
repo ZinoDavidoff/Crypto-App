@@ -19,8 +19,8 @@
           <td>{{crypto.name}}</td>
           <td id="total">
             {{crypto.value}} 
-            <i *ngIf="isGreen" style="color: green;">&#x2191;</i>
-            <i *ngIf="isRed" style="color: red;">&#x2193;</i>
+            <i *ngIf="crypto.isGreen" style="color: green;">&#x2191;</i>
+            <i *ngIf="crypto.isRed" style="color: red;">&#x2193;</i>
           </td>
 
           <td>

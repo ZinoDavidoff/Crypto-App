@@ -4,6 +4,8 @@ export interface CryptoValues {
   id: number;
   name: string;
   value: number;
+  isGreen: boolean;
+  isRed: boolean;
 }
 
 @Component({
@@ -21,16 +23,15 @@ export class CryptoDashboardComponent implements OnInit {
   }
 
   cryptos: CryptoValues[] = [
-    {id:1, name: 'Bitcoin', value: 400},
-    {id:2, name: 'Etherium', value: 550},
-    {id:3, name: 'Dogecoin', value: 1000},
-    {id:4, name: 'Polygon', value: 640},
+    {id:1, name: 'Bitcoin', value: 400, isGreen: false, isRed: false},
+    {id:2, name: 'Etherium', value: 550, isGreen: false, isRed: false},
+    {id:3, name: 'Dogecoin', value: 1000, isGreen: false, isRed: false},
+    {id:4, name: 'Polygon', value: 640, isGreen: false, isRed: false},
   ];
 
   inputValue: number = 0;
   isToggle: boolean = false;
-  isGreen: boolean = false;
-  isRed: boolean = false;
+  
   
   toggleModal() {
     this.isToggle = !this.isToggle;
@@ -41,8 +42,8 @@ export class CryptoDashboardComponent implements OnInit {
     this.cryptos[index] = item;
     item.value += this.inputValue;  
 
-    this.isRed = false;
-    this.isGreen = true;
+    item.isGreen = true;
+    item.isRed = false;
 
   }
 
@@ -51,8 +52,8 @@ export class CryptoDashboardComponent implements OnInit {
     this.cryptos[index] = item;
     item.value -= this.inputValue;
 
-    this.isRed = true;
-    this.isGreen = false;
+    item.isGreen = false;
+    item.isRed = true;
   }
 
 }
